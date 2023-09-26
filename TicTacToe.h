@@ -17,7 +17,7 @@ public:
     bool isGameOver();
     bool checkForWin(char syb);
     bool checkForFull();
-    std::string getBoard();
+    const std::string getBoard();
     void setBoard(const std::string&);
 private:
     char table[3][3]
@@ -44,8 +44,6 @@ private:
     std::string playerName;
     char playerSyb;
 };
-
-
 
 
 #endif //TT_H
