@@ -15,9 +15,9 @@ int main() {
         std::cin >> row >> col;
 
         if (currentPlayer->isValidMove(gameBoard, row, col)) {
-            gameBoard.setBoard(currentPlayer->recv());
+            // gameBoard.setBoard(currentPlayer->recvGameState());
             currentPlayer->makeMove(gameBoard, row, col);
-            currentPlayer->send(gameBoard.getBoard());
+            currentPlayer->sendMove(gameBoard.getBoard());
 
             if (gameBoard.checkForWin(currentPlayer->getSymbol())) {
                 gameBoard.displayBoard();
@@ -25,7 +25,7 @@ int main() {
                 gameIsOver = true;
             } else if (gameBoard.checkForFull()) {
                 gameBoard.displayBoard();
-                std::cout << "It's a tie!" << std::endl;
+                std::cout << "It's a drawn!" << std::endl;
                 gameIsOver = true;
             } else {
                 currentPlayer = (currentPlayer == &player1) ? &player2 : &player1;
