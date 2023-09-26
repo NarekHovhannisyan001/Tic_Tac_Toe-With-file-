@@ -7,6 +7,7 @@ Board::Board()
             table[i][j] = ' ';
         }
     }
+    setBoard(getBoard());
 }
 
 void Board::displayBoard()
@@ -94,7 +95,7 @@ bool Board::checkForFull()
     return true;
 }
 
-std::string Board::getBoard() {
+const std::string Board::getBoard() {
     std::string s;
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
@@ -128,7 +129,7 @@ void Player::sendMove(const std::string& s) const {
 
 std::string Player::recvGameState() {
     std::ifstream inputFile;
-    inputFile.open("soket.h");
+    inputFile.open("soket.txt");
     if (!inputFile) {
         std::cerr << "Failed to open the file." << std::endl;
         throw std::exception();
